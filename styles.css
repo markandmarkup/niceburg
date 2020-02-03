@@ -2,9 +2,14 @@
     box-sizing: border-box;
 }
 
+html {
+    font-size: 8px;
+}
+
 body {
     background-color: #2FA6E0;
     background-image: linear-gradient(#2FA6E0, #BADEEF);
+    font-family: 'Quattrocento Sans', sans-serif;
 }
 
 .content-column {
@@ -14,6 +19,29 @@ body {
 
 header {
     overflow: auto;
-    width: 60%;
+    width: 500px;
     margin: 0 auto;
+}
+
+header img {
+    width: 100px;
+    height: 100px;
+    float: left;
+}
+
+header h1, header h2 {
+    margin: 0 0 0 120px;
+    color: #FFFFFF;
+}
+
+header h1 {
+    font-family: 'Pacifico', cursive;
+    font-size: 6rem;
+    padding-top: 22px;
+    padding-bottom: 16px;
+}
+
+header h2 {
+    font-weight: 400;
+    font-size: 2rem;
 }
