@@ -25,8 +25,10 @@
         <div class="review">
             <div class="review-content">
                 <div class="review-image" style="background-image: url(./images/smoky-bro1-725x479.jpg);"></div>
-                <h4>Smokey 'Bro' Burger</h4>
-                <h5>Three Brothers Bristol</h5>
+                <div class="item-titles">
+                    <h4>Smokey 'Bro' Burger</h4>
+                    <h5>Three Brothers Bristol</h5>
+                </div>
                 <table class="stats">
                     <tr><th>Visit Date:</th><td>01/02/2020</td></tr>
                     <tr><th>Price:</th><td>£8.50</td></tr>
@@ -42,8 +44,10 @@
         <div class="review">
             <div class="review-content">
                 <div class="review-image" style="background-image: url(./images/IMG_0518.jpg);"></div>
-                <h4>Cheeseburger</h4>
-                <h5>Five Guys Bristol</h5>
+                <div class="item-titles">
+                    <h4>Cheeseburger</h4>
+                    <h5>Five Guys Bristol</h5>
+                </div>
                 <table class="stats">
                     <tr><th>Visit Date:</th><td>15/11/2019</td></tr>
                     <tr><th>Price:</th><td>£7.95</td></tr>
