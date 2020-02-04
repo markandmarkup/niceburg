@@ -4,10 +4,7 @@ require_once 'functions.php';
 
 $db = dbConnect();
 $all_records = dbQueryGetAll($db);
-
-//echo '<pre>';
-//var_dump($all_records);
-//echo '</pre>';
+$burger_reviews = displayReviews($all_records);
 
 ?>
 
@@ -33,9 +30,7 @@ $all_records = dbQueryGetAll($db);
 
     <section class="review-container">
         <?php
-        foreach ($all_records as $record) {
-            echo buildReview($record);
-        }
+            echo $burger_reviews;
         ?>
     </section>
 </div>
