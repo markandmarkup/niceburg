@@ -118,6 +118,21 @@ h3 {
     font-weight: 700;
 }
 
+.rating {
+    width: 175px;
+    height: 32px;
+    margin: 4px auto;
+    color: #000000;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.rating span {
+    font-family: 'Pacifico', cursive;
+    font-weight: 400;
+    font-size: 2.4rem;
+}
+
 h4 {
     margin-top: 15px;
     font-size: 2rem;

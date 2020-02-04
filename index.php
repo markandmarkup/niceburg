@@ -36,6 +36,7 @@
                     <tr><th>Value:</th><td>3.5</td></tr>
                 </table>
             </div>
+            <p class="rating">Total Score:&nbsp;&nbsp;<span>3.8</span></p>
         </div>
 
         <div class="review">
@@ -52,6 +53,7 @@
                     <tr><th>Value:</th><td>4</td></tr>
                 </table>
             </div>
+            <p class="rating">Total Score:&nbsp;&nbsp;<span>3.2</span></p>
         </div>
     </section>
 </div>
