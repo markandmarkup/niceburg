@@ -6,6 +6,16 @@ function dbQueryGetAll(PDO $db) : array {
     return $query->fetchAll();
 }
 
+function dateFormatUK(array $all_reviews) : array {
+    if ($all_reviews != null) {
+        foreach ($all_reviews as $key => $review) {
+            $date = date_create($review['visit_date']);
+            $all_reviews[$key]['visit_date'] = date_format($date, "d/m/Y");
+        }
+        return $all_reviews;
+    }
+}
+
 function displayReviews(array $all_reviews) : string {
     $output = '';
     $required_keys = ['burger_name', 'restaurant', 'visit_date', 'image', 'price', 'patty_rating', 'topping_rating', 'sides_rating', 'value_rating', 'total_score'];
@@ -23,7 +33,7 @@ function displayReviews(array $all_reviews) : string {
                     $output .= "</div>";
                     $output .= "<table class=\"stats\">";
                     $output .= "<tr><th>Visit Date:</th><td>" . $review['visit_date'] . "</td></tr>";
-                    $output .= "<tr><th>Price:</th><td>£" . $review['price'] . "</td></tr>";
+                    $output .= "<tr><th>Price:</th><td>£" . number_format($review['price'], 2, '.', ',') . "</td></tr>";
                     $output .= "<tr><th>Burger Patty:</th><td>" . $review['patty_rating'] . "</td></tr>";
                     $output .= "<tr><th>Toppings &amp; bun:</th><td>" . $review['topping_rating'] . "</td></tr>";
                     $output .= "<tr><th>Sides:</th><td>" . $review['sides_rating'] . "</td></tr>";

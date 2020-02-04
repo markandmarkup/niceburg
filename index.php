@@ -5,6 +5,7 @@ require_once 'functions.php';
 
 $db = dbConnect();
 $all_records = dbQueryGetAll($db);
+$all_records = dateFormatUK($all_records);
 $burger_reviews = displayReviews($all_records);
 
 ?>
