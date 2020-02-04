@@ -1,5 +1,14 @@
 <?php
 
+require_once 'functions.php';
+
+$db = dbConnect();
+$all_records = dbQueryGetAll($db);
+
+echo '<pre>';
+var_dump($all_records);
+echo '</pre>';
+
 ?>
 
 <html lang="en">

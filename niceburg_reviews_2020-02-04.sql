@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.7.29)
 # Database: niceburg_reviews
-# Generation Time: 2020-02-04 09:53:39 +0000
+# Generation Time: 2020-02-04 13:29:14 +0000
 # ************************************************************
 
 
@@ -46,7 +46,11 @@ LOCK TABLES `reviews` WRITE;
 INSERT INTO `reviews` (`id`, `burger_name`, `restaurant`, `visit_date`, `image`, `price`, `patty_rating`, `topping_rating`, `sides_rating`, `value_rating`, `total_score`)
 VALUES
 	(1,'Smokey \'Bro\' Burger','Three Brothers Bristol','2020-02-01','./images/smoky-bro1-725x479.jpg',8.5,4,4.5,3,3.5,3.8),
-	(2,'Cheeseburger','Five Guys Bristol','2019-11-15','./images/IMG_0518.jpg',7.95,2,3.5,3,4,3.2);
+	(2,'Cheeseburger','Five Guys Bristol','2019-11-15','./images/IMG_0518.jpg',7.95,2,3.5,3,4,3.2),
+	(3,'Dirty Burger','Dirty Burger and Chicken Shop Whitechapel','2016-05-08','./images/dirty_burger.png',6,5,4,3.5,4.5,4.3),
+	(4,'Jake &amp Elwood','Atomic Burger Bristol','2018-10-04','./images/jake_el_atomic.png',10.75,4,4.5,4,3,3.9),
+	(5,'Double Cheeseburger','McDonalds Cribbs Causeway','2019-06-21','./images/mcd_doublecheese.png',1.49,1,2,2.5,4,2.4),
+	(6,'Bacon Double Cheeseburger','Burger King','2018-09-30','./images/bk_bacondoublecheese.png',3.99,3,3,3,4,3.3);
 
 /*!40000 ALTER TABLE `reviews` ENABLE KEYS */;
 UNLOCK TABLES;
