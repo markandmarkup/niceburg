@@ -1,5 +1,6 @@
 <?php
 
+require_once 'dbConnect.php';
 require_once 'functions.php';
 
 $db = dbConnect();
