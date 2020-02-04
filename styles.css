@@ -29,9 +29,9 @@ p {
 
 header {
     overflow: auto;
-    width: 500px;
+    width: fit-content;
     margin: 0 auto;
-    padding-bottom: 20px;
+    padding-bottom: 10px;
 }
 
 header img {
@@ -41,11 +41,11 @@ header img {
 }
 
 header h1, header h2 {
-    margin: 0 0 0 120px;
     color: #FFFFFF;
 }
 
 header h1 {
+    margin: 0 0 0 120px;
     font-family: 'Pacifico', cursive;
     font-size: 4rem;
     padding-top: 22px;
@@ -53,6 +53,7 @@ header h1 {
 }
 
 header h2 {
+    margin: 10px 0 0 0;
     font-weight: 400;
     font-size: 1.8rem;
 }
