@@ -1,7 +1,9 @@
 <?php
 
 /** Query to return all review records for main collection page display
+ *
  * @param PDO $db
+ *
  * @return array
  */
 function dbQueryGetAll(PDO $db) : array {
@@ -11,7 +13,9 @@ function dbQueryGetAll(PDO $db) : array {
 }
 
 /** Cycles through reviews, changing the date format to dd/mm/yyyy from sql yyyy/mm/dd
+ *
  * @param array $all_reviews
+ *
  * @return array
  */
 function dateFormatUK(array $all_reviews) : array {
@@ -30,7 +34,9 @@ function dateFormatUK(array $all_reviews) : array {
 }
 
 /** Generates html for review panels from db array. Must receive exact fields
+ *
  * @param array $all_reviews
+ *
  * @return string
  */
 function displayReviews(array $all_reviews) : string {
