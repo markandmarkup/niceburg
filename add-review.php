@@ -35,12 +35,12 @@
             </div>
             <div class="form-error-message">There is an error in your input</div>
 
-            <div class="form-line">
+            <div class="form-line short-form-line">
                 <label for="visit_date">Visit Date</label><input id="visit_date" name="visit_date" type="date" />
             </div>
             <div class="form-error-message">There is an error in your input</div>
 
-            <div class="form-line">
+            <div class="form-line short-form-line">
                 <label for="price">Price</label><span>&#163;</span><input id="price" name="price" type="text" />
             </div>
             <div class="form-error-message">There is an error in your input</div>
