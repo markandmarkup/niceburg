@@ -63,12 +63,25 @@ header h2 {
     margin-top: 20px;
     margin-bottom: 10px;
     background-color: #FFFFFF;
-    padding: 7px 15px;
     border-radius: 8px;
+    overflow: auto;
+}
+
+a.home-link {
+    float: left;
+    height: 36px;
+    padding: 7px 15px;
+    background-color: #FFCC89;
+    font-size: 1.6rem;
+    text-decoration: none;
+    border-radius: 8px;
+    color: #175270;
 }
 
 h3 {
+    display: inline-block;
     font-size: 1.6rem;
+    padding: 7px 25px;
 }
 
 .review-container {

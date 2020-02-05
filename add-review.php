@@ -19,7 +19,7 @@
     </header>
 
     <div class="section-header">
-        <a class="header-link" href="#">&lt; Home</a>
+        <a class="home-link" href="index.php">&lt; Home</a>
         <h3>Add a review</h3>
     </div>
 
@@ -32,55 +32,55 @@
             <div class="rating-box">
                 <label for="patty_rating">Patty Score</label>
                 <div class="score-container">
-                    <input type="radio" name="patty_rating" value="0.5" />
-                    <input type="radio" name="patty_rating" value="1" />
-                    <input type="radio" name="patty_rating" value="1.5" />
-                    <input type="radio" name="patty_rating" value="2" />
-                    <input type="radio" name="patty_rating" value="2.5" />
-                    <input type="radio" name="patty_rating" value="3" />
-                    <input type="radio" name="patty_rating" value="3.5" />
-                    <input type="radio" name="patty_rating" value="4" />
-                    <input type="radio" name="patty_rating" value="4.5" />
-                    <input type="radio" name="patty_rating" value="5" />
+                    <input type="radio" class="burger-lh" name="patty_rating" value="0.5" />
+                    <input type="radio" class="burger-rh" name="patty_rating" value="1" />
+                    <input type="radio" class="burger-lh" name="patty_rating" value="1.5" />
+                    <input type="radio" class="burger-rh" name="patty_rating" value="2" />
+                    <input type="radio" class="burger-lh" name="patty_rating" value="2.5" />
+                    <input type="radio" class="burger-rh" name="patty_rating" value="3" />
+                    <input type="radio" class="burger-lh" name="patty_rating" value="3.5" />
+                    <input type="radio" class="burger-rh" name="patty_rating" value="4" />
+                    <input type="radio" class="burger-lh" name="patty_rating" value="4.5" />
+                    <input type="radio" class="burger-rh" name="patty_rating" value="5" />
                 </div>
                 <label for="topping_rating">Topping Score</label>
                 <div class="score-container">
-                    <input type="radio" name="topping_rating" value="0.5" />
-                    <input type="radio" name="topping_rating" value="1" />
-                    <input type="radio" name="topping_rating" value="1.5" />
-                    <input type="radio" name="topping_rating" value="2" />
-                    <input type="radio" name="topping_rating" value="2.5" />
-                    <input type="radio" name="topping_rating" value="3" />
-                    <input type="radio" name="topping_rating" value="3.5" />
-                    <input type="radio" name="topping_rating" value="4" />
-                    <input type="radio" name="topping_rating" value="4.5" />
-                    <input type="radio" name="topping_rating" value="5" />
+                    <input type="radio" class="burger-lh" name="topping_rating" value="0.5" />
+                    <input type="radio" class="burger-rh" name="topping_rating" value="1" />
+                    <input type="radio" class="burger-lh" name="topping_rating" value="1.5" />
+                    <input type="radio" class="burger-rh" name="topping_rating" value="2" />
+                    <input type="radio" class="burger-lh" name="topping_rating" value="2.5" />
+                    <input type="radio" class="burger-rh" name="topping_rating" value="3" />
+                    <input type="radio" class="burger-lh" name="topping_rating" value="3.5" />
+                    <input type="radio" class="burger-rh" name="topping_rating" value="4" />
+                    <input type="radio" class="burger-lh" name="topping_rating" value="4.5" />
+                    <input type="radio" class="burger-rh" name="topping_rating" value="5" />
                 </div>
                 <label for="sides_rating">Sides Score</label>
                 <div class="score-container">
-                    <input type="radio" name="sides_rating" value="0.5" />
-                    <input type="radio" name="sides_rating" value="1" />
-                    <input type="radio" name="sides_rating" value="1.5" />
-                    <input type="radio" name="sides_rating" value="2" />
-                    <input type="radio" name="sides_rating" value="2.5" />
-                    <input type="radio" name="sides_rating" value="3" />
-                    <input type="radio" name="sides_rating" value="3.5" />
-                    <input type="radio" name="sides_rating" value="4" />
-                    <input type="radio" name="sides_rating" value="4.5" />
-                    <input type="radio" name="sides_rating" value="5" />
+                    <input type="radio" class="burger-lh" name="sides_rating" value="0.5" />
+                    <input type="radio" class="burger-rh" name="sides_rating" value="1" />
+                    <input type="radio" class="burger-lh" name="sides_rating" value="1.5" />
+                    <input type="radio" class="burger-rh" name="sides_rating" value="2" />
+                    <input type="radio" class="burger-lh" name="sides_rating" value="2.5" />
+                    <input type="radio" class="burger-rh" name="sides_rating" value="3" />
+                    <input type="radio" class="burger-lh" name="sides_rating" value="3.5" />
+                    <input type="radio" class="burger-rh" name="sides_rating" value="4" />
+                    <input type="radio" class="burger-lh" name="sides_rating" value="4.5" />
+                    <input type="radio" class="burger-rh" name="sides_rating" value="5" />
                 </div>
                 <label for="value_rating">Value Score</label>
                 <div class="score-container">
-                    <input type="radio" name="value_rating" value="0.5" />
-                    <input type="radio" name="value_rating" value="1" />
-                    <input type="radio" name="value_rating" value="1.5" />
-                    <input type="radio" name="value_rating" value="2" />
-                    <input type="radio" name="value_rating" value="2.5" />
-                    <input type="radio" name="value_rating" value="3" />
-                    <input type="radio" name="value_rating" value="3.5" />
-                    <input type="radio" name="value_rating" value="4" />
-                    <input type="radio" name="value_rating" value="4.5" />
-                    <input type="radio" name="value_rating" value="5" />
+                    <input type="radio" class="burger-lh" name="value_rating" value="0.5" />
+                    <input type="radio" class="burger-rh" name="value_rating" value="1" />
+                    <input type="radio" class="burger-lh" name="value_rating" value="1.5" />
+                    <input type="radio" class="burger-rh" name="value_rating" value="2" />
+                    <input type="radio" class="burger-lh" name="value_rating" value="2.5" />
+                    <input type="radio" class="burger-rh" name="value_rating" value="3" />
+                    <input type="radio" class="burger-lh" name="value_rating" value="3.5" />
+                    <input type="radio" class="burger-rh" name="value_rating" value="4" />
+                    <input type="radio" class="burger-lh" name="value_rating" value="4.5" />
+                    <input type="radio" class="burger-rh" name="value_rating" value="5" />
                 </div>
             </div>
             <label for="add_image">&#8853; Add an image<input id="add_image" name="add_image" type="text" /></label>
