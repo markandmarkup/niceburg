@@ -1,28 +1,45 @@
 <?php
 
+/** Query to return all review records for main collection page display
+ * @param PDO $db
+ * @return array
+ */
 function dbQueryGetAll(PDO $db) : array {
     $query = $db->prepare("SELECT `burger_name`, `restaurant`, `visit_date`, `image`, `price`, `patty_rating`, `topping_rating`, `sides_rating`, `value_rating`, `total_score` FROM `reviews`");
     $query->execute();
     return $query->fetchAll();
 }
 
+/** Cycles through reviews, changing the date format to dd/mm/yyyy from sql yyyy/mm/dd
+ * @param array $all_reviews
+ * @return array
+ */
 function dateFormatUK(array $all_reviews) : array {
     if ($all_reviews != null) {
         foreach ($all_reviews as $key => $review) {
-            $date = date_create($review['visit_date']);
-            $all_reviews[$key]['visit_date'] = date_format($date, "d/m/Y");
+            if (isset($review['visit_date'])) {
+                $date = date_create($review['visit_date']);
+                $all_reviews[$key]['visit_date'] = date_format($date, "d/m/Y");
+            }
         }
         return $all_reviews;
+    } else {
+        $output = [];
+        return $output;
     }
 }
 
+/** Generates html for review panels from db array. Must receive exact fields
+ * @param array $all_reviews
+ * @return string
+ */
 function displayReviews(array $all_reviews) : string {
     $output = '';
     $required_keys = ['burger_name', 'restaurant', 'visit_date', 'image', 'price', 'patty_rating', 'topping_rating', 'sides_rating', 'value_rating', 'total_score'];
 
     if ($all_reviews != null) {
         foreach ($all_reviews as $review) {
-            if ($review != null) {
+            if (is_array($review) && $review != null) {
                 if (array_keys($review) === $required_keys) {
                     $output .= "<div class=\"review\">";
                     $output .= "<div class=\"review-content\">";
