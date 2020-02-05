@@ -25,11 +25,28 @@
 
     <section class="review-form">
         <form action="add-review.php" method="post">
-            <label for="burger_name">Burger name<input id="burger_name" name="burger_name" type="text" /></label>
-            <label for="restaurant">Restaurant<input id="restaurant" name="restaurant" type="text" /></label>
-            <label for="visit_date">Visit Date<input id="visit_date" name="visit_date" type="date" /></label>
-            <label for="price">Price <span>&#163;</span><input id="price" name="price" type="text" /></label>
+            <div class="form-line">
+                <label for="burger_name">Burger Name</label><input id="burger_name" name="burger_name" type="text" />
+            </div>
+            <div class="form-error-message">There is an error in your input</div>
+
+            <div class="form-line">
+                <label for="restaurant">Restaurant</label><input id="restaurant" name="restaurant" type="text" />
+            </div>
+            <div class="form-error-message">There is an error in your input</div>
+
+            <div class="form-line">
+                <label for="visit_date">Visit Date</label><input id="visit_date" name="visit_date" type="date" />
+            </div>
+            <div class="form-error-message">There is an error in your input</div>
+
+            <div class="form-line">
+                <label for="price">Price</label><span>&#163;</span><input id="price" name="price" type="text" />
+            </div>
+            <div class="form-error-message">There is an error in your input</div>
+
             <div class="rating-box">
+                <div class="form-line">
                 <label for="patty_rating">Patty Score</label>
                 <div class="score-container">
                     <input type="radio" class="burger-lh" name="patty_rating" value="0.5" />
@@ -43,6 +60,9 @@
                     <input type="radio" class="burger-lh" name="patty_rating" value="4.5" />
                     <input type="radio" class="burger-rh" name="patty_rating" value="5" />
                 </div>
+                </div>
+
+                <div class="form-line">
                 <label for="topping_rating">Topping Score</label>
                 <div class="score-container">
                     <input type="radio" class="burger-lh" name="topping_rating" value="0.5" />
@@ -56,6 +76,9 @@
                     <input type="radio" class="burger-lh" name="topping_rating" value="4.5" />
                     <input type="radio" class="burger-rh" name="topping_rating" value="5" />
                 </div>
+                </div>
+
+                <div class="form-line">
                 <label for="sides_rating">Sides Score</label>
                 <div class="score-container">
                     <input type="radio" class="burger-lh" name="sides_rating" value="0.5" />
@@ -69,6 +92,9 @@
                     <input type="radio" class="burger-lh" name="sides_rating" value="4.5" />
                     <input type="radio" class="burger-rh" name="sides_rating" value="5" />
                 </div>
+                </div>
+
+                <div class="form-line">
                 <label for="value_rating">Value Score</label>
                 <div class="score-container">
                     <input type="radio" class="burger-lh" name="value_rating" value="0.5" />
@@ -82,8 +108,14 @@
                     <input type="radio" class="burger-lh" name="value_rating" value="4.5" />
                     <input type="radio" class="burger-rh" name="value_rating" value="5" />
                 </div>
+                </div>
             </div>
-            <label for="add_image">&#8853; Add an image<input id="add_image" name="add_image" type="text" /></label>
+
+            <div class="form-line">
+                <label for="add_image">&#8853; Add an image</label><input id="add_image" name="add_image" type="text" />
+            </div>
+            <div class="form-error-message">There is an error in your input</div>
+
             <input type="submit" class="rounded-button" />
             <a href="#" class="rounded-button cancel">&#10005; Cancel</a>
         </form>
