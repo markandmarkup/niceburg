@@ -1,5 +1,13 @@
 <?php
 
+require_once 'dbConnect.php';
+require_once 'functions.php';
+
+$db = dbConnect();
+$all_records = dbQueryGetAll($db);
+$all_records = dateFormatUK($all_records);
+$burger_reviews = displayReviews($all_records);
+
 ?>
 
 <html lang="en">
@@ -23,43 +31,9 @@
     </div>
 
     <section class="review-container">
-        <div class="review">
-            <div class="review-content">
-                <div class="review-image" style="background-image: url(./images/smoky-bro1-725x479.jpg);"></div>
-                <div class="item-titles">
-                    <h4>Smokey 'Bro' Burger</h4>
-                    <h5>Three Brothers Bristol</h5>
-                </div>
-                <table class="stats">
-                    <tr><th>Visit Date:</th><td>01/02/2020</td></tr>
-                    <tr><th>Price:</th><td>£8.50</td></tr>
-                    <tr><th>Burger Patty:</th><td>4</td></tr>
-                    <tr><th>Toppings &amp; bun:</th><td>4.5</td></tr>
-                    <tr><th>Sides:</th><td>3</td></tr>
-                    <tr><th>Value:</th><td>3.5</td></tr>
-                </table>
-            </div>
-            <p class="rating">Total Score:&nbsp;&nbsp;<span>3.8</span></p>
-        </div>
-
-        <div class="review">
-            <div class="review-content">
-                <div class="review-image" style="background-image: url(./images/IMG_0518.jpg);"></div>
-                <div class="item-titles">
-                    <h4>Cheeseburger</h4>
-                    <h5>Five Guys Bristol</h5>
-                </div>
-                <table class="stats">
-                    <tr><th>Visit Date:</th><td>15/11/2019</td></tr>
-                    <tr><th>Price:</th><td>£7.95</td></tr>
-                    <tr><th>Burger Patty:</th><td>2</td></tr>
-                    <tr><th>Toppings &amp; bun:</th><td>3.5</td></tr>
-                    <tr><th>Sides:</th><td>3</td></tr>
-                    <tr><th>Value:</th><td>4</td></tr>
-                </table>
-            </div>
-            <p class="rating">Total Score:&nbsp;&nbsp;<span>3.2</span></p>
-        </div>
+        <?php
+            echo $burger_reviews;
+        ?>
     </section>
 </div>
 </body>
