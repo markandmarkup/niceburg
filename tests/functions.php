@@ -62,7 +62,6 @@ class FunctionTests extends TestCase
         $expected .= '<div class="review"><div class="review-content"><div class="review-image" style="background-image: url(./images/burger.jpg);"></div><div class="item-titles"><h4>Burger2</h4><h5>BurgerKing</h5></div><table class="stats"><tr><th>Visit Date:</th><td>01/01/2020</td></tr><tr><th>Price:</th><td>£5.57</td></tr><tr><th>Burger Patty:</th><td>4</td></tr><tr><th>Toppings &amp; bun:</th><td>1.5</td></tr><tr><th>Sides:</th><td>3</td></tr><tr><th>Value:</th><td>2.5</td></tr></table></div><p class="rating">Total Score:&nbsp;&nbsp;<span>3.2</span></p></div>';
         $case = displayReviews($input);
         $this->assertEquals($expected, $case);
-
     }
 
     //passing the function an array with too many fields
@@ -71,7 +70,6 @@ class FunctionTests extends TestCase
         $expected = 'Keys do not match';
         $case = displayReviews($input);
         $this->assertEquals($expected, $case);
-
     }
 
     //passing the function an array with too few fields
@@ -80,7 +78,6 @@ class FunctionTests extends TestCase
         $expected = 'Keys do not match';
         $case = displayReviews($input);
         $this->assertEquals($expected, $case);
-
     }
 
     //passing the function an empty array
@@ -89,7 +86,6 @@ class FunctionTests extends TestCase
         $expected = 'No records to display';
         $case = displayReviews($input);
         $this->assertEquals($expected, $case);
-
     }
 
     //passing the function a non-nested array
