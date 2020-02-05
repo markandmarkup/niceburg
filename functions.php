@@ -6,7 +6,7 @@
  *
  * @return array
  */
-function dbGetAllReviews(PDO $db) : array {
+function getAllReviews(PDO $db) : array {
     $query = $db->prepare("SELECT `burger_name`, `restaurant`, `visit_date`, `image`, `price`, `patty_rating`, `topping_rating`, `sides_rating`, `value_rating`, `total_score` FROM `reviews`");
     $query->execute();
     return $query->fetchAll();
@@ -76,7 +76,9 @@ function displayReviews(array $all_reviews) : string {
  *
  * @return bool
  */
-function checkReviewKeys(array $keys, array $reviews) : bool {
+function checkReviewKeys(array $reviews) : bool {
+
+    $keys = ['burger_name', 'restaurant', 'visit_date', 'image', 'price', 'patty_rating', 'topping_rating', 'sides_rating', 'value_rating', 'total_score'];
 
     if(gettype($reviews[0]) !== 'array'){
         return false;

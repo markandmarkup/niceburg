@@ -92,30 +92,27 @@ class FunctionTests extends TestCase
     //passing the function an array with exact fields
     public function testSuccessCheckReviewKeys()
     {
-        $input1 = ['burger_name', 'restaurant', 'visit_date', 'image', 'price', 'patty_rating', 'topping_rating', 'sides_rating', 'value_rating', 'total_score'];
-        $input2 = [['burger_name' => 'Burger', 'restaurant' => 'McDonalds', 'visit_date' => '01/01/2020', 'image' => './images/burger.jpg', 'price' => '5.57', 'patty_rating' => 4, 'topping_rating' => 1.5, 'sides_rating' => 3, 'value_rating' => 2.5, 'total_score' => 3.2]];
+        $input = [['burger_name' => 'Burger', 'restaurant' => 'McDonalds', 'visit_date' => '01/01/2020', 'image' => './images/burger.jpg', 'price' => '5.57', 'patty_rating' => 4, 'topping_rating' => 1.5, 'sides_rating' => 3, 'value_rating' => 2.5, 'total_score' => 3.2]];
         $expected = true;
-        $case = checkReviewKeys($input1, $input2);
+        $case = checkReviewKeys($input);
         $this->assertEquals($expected, $case);
     }
 
     //passing the function an array with extra fields
     public function testFailureCheckReviewKeysExtraFields()
     {
-        $input1 = ['burger_name', 'restaurant', 'visit_date', 'image', 'price', 'patty_rating', 'topping_rating', 'sides_rating', 'value_rating', 'total_score'];
-        $input2 = [['burger_name' => 'Burger', 'restaurant' => 'McDonalds', 'visit_date' => '01/01/2020', 'image' => './images/burger.jpg', 'price' => '5.57', 'patty_rating' => 4, 'topping_rating' => 1.5, 'sides_rating' => 3, 'value_rating' => 2.5, 'total_score' => 3.2, 'extra' => 'Donk']];
+        $input = [['burger_name' => 'Burger', 'restaurant' => 'McDonalds', 'visit_date' => '01/01/2020', 'image' => './images/burger.jpg', 'price' => '5.57', 'patty_rating' => 4, 'topping_rating' => 1.5, 'sides_rating' => 3, 'value_rating' => 2.5, 'total_score' => 3.2, 'extra' => 'Donk']];
         $expected = false;
-        $case = checkReviewKeys($input1, $input2);
+        $case = checkReviewKeys($input);
         $this->assertEquals($expected, $case);
     }
 
     //passing the function a non-nested array
     public function testFailureCheckReviewKeysNonNestArray()
     {
-        $input1 = ['burger_name', 'restaurant', 'visit_date', 'image', 'price', 'patty_rating', 'topping_rating', 'sides_rating', 'value_rating', 'total_score'];
-        $input2 = ['burger_name' => 'Burger', 'restaurant' => 'McDonalds', 'visit_date' => '01/01/2020', 'image' => './images/burger.jpg', 'price' => '5.57', 'patty_rating' => 4, 'topping_rating' => 1.5, 'sides_rating' => 3, 'value_rating' => 2.5];
+        $input = ['burger_name' => 'Burger', 'restaurant' => 'McDonalds', 'visit_date' => '01/01/2020', 'image' => './images/burger.jpg', 'price' => '5.57', 'patty_rating' => 4, 'topping_rating' => 1.5, 'sides_rating' => 3, 'value_rating' => 2.5];
         $expected = false;
-        $case = checkReviewKeys($input1, $input2);
+        $case = checkReviewKeys($input);
         $this->assertEquals($expected, $case);
     }
 
@@ -123,38 +120,27 @@ class FunctionTests extends TestCase
     //passing the function an array with too few fields
     public function testFailureCheckReviewKeysNotEnoughFields()
     {
-        $input1 = ['burger_name', 'restaurant', 'visit_date', 'image', 'price', 'patty_rating', 'topping_rating', 'sides_rating', 'value_rating', 'total_score'];
-        $input2 = [['burger_name' => 'Burger', 'restaurant' => 'McDonalds', 'visit_date' => '01/01/2020', 'image' => './images/burger.jpg', 'price' => '5.57', 'patty_rating' => 4, 'topping_rating' => 1.5, 'sides_rating' => 3, 'value_rating' => 2.5]];
+        $input = [['burger_name' => 'Burger', 'restaurant' => 'McDonalds', 'visit_date' => '01/01/2020', 'image' => './images/burger.jpg', 'price' => '5.57', 'patty_rating' => 4, 'topping_rating' => 1.5, 'sides_rating' => 3, 'value_rating' => 2.5]];
         $expected = false;
-        $case = checkReviewKeys($input1, $input2);
+        $case = checkReviewKeys($input);
         $this->assertEquals($expected, $case);
     }
 
     //passing the function null values
     public function testFailureCheckReviewKeysNullValues()
     {
-        $input1 = ['burger_name', 'restaurant', 'visit_date', 'image', 'price', 'patty_rating', 'topping_rating', 'sides_rating', 'value_rating', 'total_score'];
-        $input2 = [['burger_name' => null, 'restaurant' => null, 'visit_date' => null, 'image' => null, 'price' => null, 'patty_rating' => null, 'topping_rating' => null, 'sides_rating' => null, 'value_rating' => null]];
+        $input = [['burger_name' => null, 'restaurant' => null, 'visit_date' => null, 'image' => null, 'price' => null, 'patty_rating' => null, 'topping_rating' => null, 'sides_rating' => null, 'value_rating' => null]];
         $expected = false;
-        $case = checkReviewKeys($input1, $input2);
+        $case = checkReviewKeys($input);
         $this->assertEquals($expected, $case);
     }
 
-    //passing a simple input type as input 1
-    public function testMalformedCheckReviewKeysInput1()
+    //passing a simple input type
+    public function testMalformedCheckReviewKeys()
     {
         $this->expectException(TypeError::class);
-        $input1 = 'burger';
-        $input2 = [['burger'=>'Hamburger', 'restaurant'=>'McDonalds']];
-        $case = checkReviewKeys($input1, $input2);
+        $input = 'burger';
+        $case = checkReviewKeys($input);
     }
 
-    //passing a simple input type as input 2
-    public function testMalformedCheckReviewKeysInput2()
-    {
-        $this->expectException(TypeError::class);
-        $input1 = ['burger', 'restaurant'];
-        $input2 = 'burger';
-        $case = checkReviewKeys($input1, $input2);
-    }
 }
