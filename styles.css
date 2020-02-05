@@ -67,15 +67,23 @@ header h2 {
     overflow: auto;
 }
 
-a.home-link {
-    float: left;
-    height: 36px;
-    padding: 7px 20px;
-    background-color: #FFCC89;
-    font-size: 1.5rem;
+a {
     text-decoration: none;
+}
+
+.header-link {
+    float: right;
+    height: 36px;
+    padding: 7px 25px;
+    background-color: #FFCC89;
+    font-size: 1.6rem;
     border-radius: 8px;
     color: #814F19;
+    font-weight: 700;
+}
+
+.home {
+    float: left;
 }
 
 h3 {
@@ -86,11 +94,12 @@ h3 {
 
 section.review-container {
     overflow: auto;
+    margin-bottom: 50px;
 }
 
 section.review-form {
     width: 650px;
-    margin: 0 auto;
+    margin: 0 auto 100px auto;
     padding: 15px 0;
 }
 
@@ -166,6 +175,14 @@ h5 {
 
 /* Form page styling */
 
+.review-post-message {
+    width: -moz-fit-content;
+    width: fit-content;
+    margin: 0 auto 15px auto;
+    color: #175270;
+    font-size: 1.5rem;
+}
+
 .form-line {
     display: block;
     background-color: #FFFFFF;
@@ -173,6 +190,10 @@ h5 {
     font-size: 1.4rem;
     padding: 4px 0;
     overflow: auto;
+}
+
+.transparent {
+    background-color: rgba(255,255,255,0)
 }
 
 .short-form-line {
@@ -273,10 +294,30 @@ input.short-input {
     background-image: url("./images/burger_full_rh.png");
 }
 
+.rounded-button {
+    font-size: 1.6rem;
+    height: 48px;
+    background-image: linear-gradient(#FFCC89,#FFE0B7);
+    padding: 12px 40px;
+    border-radius: 25px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.cancel {
+    float: right;
+    background-image: none;
+    background-color: #f08080;
+}
+
 @media screen and (max-width: 1100px) {
 
     .content-column {
         width: 600px;
+    }
+
+    section.review-form{
+        width: 96%;
     }
 
     .review {

@@ -19,11 +19,12 @@
     </header>
 
     <div class="section-header">
-        <a class="home-link" href="index.php">&lt; Home</a>
+        <a class="header-link home" href="index.php">&lt; Home</a>
         <h3>Add a review</h3>
     </div>
 
     <section class="review-form">
+        <div class="review-post-message">Review successfully posted!</div>
         <form action="add-review.php" method="post">
             <div class="form-line">
                 <label for="burger_name">Burger Name</label><input id="burger_name" name="burger_name" type="text" />
@@ -116,8 +117,10 @@
             </div>
             <div class="form-error-message">There is an error in your input</div>
 
-            <input type="submit" class="rounded-button" />
-            <a href="#" class="rounded-button cancel">&#10005; Cancel</a>
+            <div class="form-line transparent">
+                <input type="submit" class="rounded-button" value="Submit Review  &#187;" />
+                <a href="index.php" class="rounded-button cancel">&#10005; Cancel</a>
+            </div>
         </form>
     </section>
 
