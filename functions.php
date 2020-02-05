@@ -6,7 +6,7 @@
  *
  * @return array
  */
-function dbQueryGetAll(PDO $db) : array {
+function dbGetAllReviews(PDO $db) : array {
     $query = $db->prepare("SELECT `burger_name`, `restaurant`, `visit_date`, `image`, `price`, `patty_rating`, `topping_rating`, `sides_rating`, `value_rating`, `total_score` FROM `reviews`");
     $query->execute();
     return $query->fetchAll();

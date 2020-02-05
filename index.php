@@ -4,7 +4,7 @@ require_once 'dbConnect.php';
 require_once 'functions.php';
 
 $db = dbConnect();
-$all_records = dbQueryGetAll($db);
+$all_records = dbGetAllReviews($db);
 $all_records = dateFormatUK($all_records);
 $burger_reviews = displayReviews($all_records);
 
@@ -31,9 +31,7 @@ $burger_reviews = displayReviews($all_records);
     </div>
 
     <section class="review-container">
-        <?php
-            echo $burger_reviews;
-        ?>
+        <?php echo $burger_reviews; ?>
     </section>
 </div>
 </body>

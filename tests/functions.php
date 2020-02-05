@@ -16,7 +16,7 @@ class FunctionTests extends TestCase
     }
 
     //passing an array item with null value
-    public function testFailureDateFormat() {
+    public function testFailureDateFormatNull() {
         $input = [['visit_date'=>null],['visit_date'=>'2019-11-30']];
         $expected = [['visit_date'=>''],['visit_date'=>'30/11/2019']];
         $case = dateFormatUK($input);
@@ -24,7 +24,7 @@ class FunctionTests extends TestCase
     }
 
     //passing an array without a 'visit_date' key
-    public function testFailureDateFormat2() {
+    public function testFailureDateFormatNoDate() {
         $input = [['name'=>'john', 'age'=>24],['name'=>'dave', 'age'=>50]];
         $expected = [['name'=>'john', 'age'=>24],['name'=>'dave', 'age'=>50]];
         $case = dateFormatUK($input);
@@ -32,7 +32,7 @@ class FunctionTests extends TestCase
     }
 
     //passing an empty array to the function
-    public function testFailureDateFormat3() {
+    public function testFailureDateFormatEmptyArray() {
         $input = [];
         $expected = [];
         $case = dateFormatUK($input);
@@ -40,7 +40,7 @@ class FunctionTests extends TestCase
     }
 
     //passing an array where the dates are already formatted
-    public function testFailureDateFormat4()
+    public function testFailureDateFormatPreFormat()
     {
         $input = [['visit_date' => '02/02/2020'], ['visit_date' => '01/01/2019']];
         $expected = [['visit_date' => '02/02/2020'], ['visit_date' => '01/01/2019']];
@@ -65,7 +65,7 @@ class FunctionTests extends TestCase
     }
 
     //passing the function an array with too many fields
-    public function testFailureDisplayReviews() {
+    public function testFailureDisplayReviewsExtraFields() {
         $input = [['burger_name'=>'Burger', 'restaurant'=>'McDonalds', 'visit_date'=>'01/01/2020', 'image'=>'./images/burger.jpg', 'price'=>'5.57', 'patty_rating'=>4, 'topping_rating'=>1.5, 'sides_rating'=>3, 'value_rating'=>2.5, 'total_score'=>3.2, 'extra'=>'Donk']];
         $expected = 'Keys do not match';
         $case = displayReviews($input);
@@ -73,7 +73,7 @@ class FunctionTests extends TestCase
     }
 
     //passing the function an array with too few fields
-    public function testFailureDisplayReviews2() {
+    public function testFailureDisplayReviewsNotEnoughFields() {
         $input = [['burger_name'=>'Burger', 'restaurant'=>'McDonalds', 'visit_date'=>'01/01/2020', 'image'=>'./images/burger.jpg', 'price'=>'5.57', 'patty_rating'=>4, 'topping_rating'=>1.5, 'sides_rating'=>3, 'value_rating'=>2.5]];
         $expected = 'Keys do not match';
         $case = displayReviews($input);
@@ -81,7 +81,7 @@ class FunctionTests extends TestCase
     }
 
     //passing the function an empty array
-    public function testFailureDisplayReviews3() {
+    public function testFailureDisplayReviewsEmptyArray() {
         $input = [];
         $expected = 'No records to display';
         $case = displayReviews($input);
@@ -89,7 +89,7 @@ class FunctionTests extends TestCase
     }
 
     //passing the function a non-nested array
-    public function testFailureDisplayReviews4() {
+    public function testFailureDisplayReviewsNonNestArray() {
         $input = ['burger_name'=>'Burger', 'restaurant'=>'McDonalds', 'visit_date'=>'01/01/2020', 'image'=>'./images/burger.jpg', 'price'=>'5.57', 'patty_rating'=>4, 'topping_rating'=>1.5, 'sides_rating'=>3, 'value_rating'=>2.5];
         $expected = '';
         $case = displayReviews($input);
@@ -97,7 +97,7 @@ class FunctionTests extends TestCase
     }
 
     //passing the function null values
-    public function testFailureDisplayReviews5() {
+    public function testFailureDisplayReviewsNullValues() {
         $input = [['burger_name'=>null, 'restaurant'=>null, 'visit_date'=>null, 'image'=>null, 'price'=>null, 'patty_rating'=>null, 'topping_rating'=>null, 'sides_rating'=>null, 'value_rating'=>null]];
         $expected = 'Keys do not match';
         $case = displayReviews($input);

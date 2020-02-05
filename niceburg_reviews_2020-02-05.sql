@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.7.29)
 # Database: niceburg_reviews
-# Generation Time: 2020-02-05 10:56:29 +0000
+# Generation Time: 2020-02-05 11:49:04 +0000
 # ************************************************************
 
 
@@ -27,16 +27,16 @@ DROP TABLE IF EXISTS `reviews`;
 
 CREATE TABLE `reviews` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `burger_name` varchar(200) DEFAULT NULL,
-  `restaurant` varchar(200) DEFAULT NULL,
-  `visit_date` date DEFAULT NULL,
-  `image` varchar(500) DEFAULT './images/burger_empty.png',
-  `price` float unsigned DEFAULT NULL,
-  `patty_rating` float unsigned DEFAULT NULL,
-  `topping_rating` float unsigned DEFAULT NULL,
-  `sides_rating` float unsigned DEFAULT NULL,
-  `value_rating` float unsigned DEFAULT NULL,
-  `total_score` float unsigned DEFAULT NULL,
+  `burger_name` varchar(200) NOT NULL DEFAULT '',
+  `restaurant` varchar(200) NOT NULL DEFAULT '',
+  `visit_date` date NOT NULL,
+  `image` varchar(500) NOT NULL DEFAULT './images/burger_empty.png',
+  `price` float unsigned NOT NULL,
+  `patty_rating` float unsigned NOT NULL,
+  `topping_rating` float unsigned NOT NULL,
+  `sides_rating` float unsigned NOT NULL,
+  `value_rating` float unsigned NOT NULL,
+  `total_score` float unsigned NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
