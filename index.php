@@ -6,7 +6,13 @@ require_once 'functions.php';
 $db = dbConnect();
 $all_records = dbGetAllReviews($db);
 $all_records = dateFormatUK($all_records);
+
+$req_display_fields = ['burger_name', 'restaurant', 'visit_date', 'image', 'price', 'patty_rating', 'topping_rating', 'sides_rating', 'value_rating', 'total_score'];
+if (checkReviewKeys($req_display_fields, $all_records)) {
 $burger_reviews = displayReviews($all_records);
+} else {
+    $burger_reviews = 'Records do not contain the correct fields';
+}
 
 ?>
 
