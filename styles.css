@@ -184,6 +184,11 @@ h5 {
         min-width: 370px;
         margin: 10px auto 15px auto;
         float: none;
+        height: 305px;
+    }
+
+    .review-content {
+        height: 255px;
     }
 
     .review-image {
