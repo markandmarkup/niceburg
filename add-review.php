@@ -27,22 +27,22 @@
         <div class="review-post-message">Review successfully posted!</div>
         <form action="add-review.php" method="post">
             <div class="form-line">
-                <label for="burger_name">Burger Name</label><input id="burger_name" name="burger_name" type="text" />
+                <label for="burger_name">Burger Name</label><input id="burger_name" name="burger_name" type="text" required />
             </div>
             <div class="form-error-message">There is an error in your input</div>
 
             <div class="form-line">
-                <label for="restaurant">Restaurant</label><input id="restaurant" name="restaurant" type="text" />
+                <label for="restaurant">Restaurant</label><input id="restaurant" name="restaurant" type="text" required />
             </div>
             <div class="form-error-message">There is an error in your input</div>
 
             <div class="form-line short-form-line">
-                <label for="visit_date">Visit Date</label><input id="visit_date" class="short-input" name="visit_date" type="date" />
+                <label for="visit_date">Visit Date</label><input id="visit_date" class="short-input" name="visit_date" type="date" required />
             </div>
             <div class="form-error-message">There is an error in your input</div>
 
             <div class="form-line short-form-line">
-                <label for="price">Price</label><span>&#163;</span><input id="price" class="short-input" name="price" type="text" />
+                <label for="price">Price</label><span>&#163;</span><input id="price" class="short-input" name="price" type="number" step="0.01" min="0" max="999.99" required />
             </div>
             <div class="form-error-message">There is an error in your input</div>
 

@@ -179,12 +179,10 @@ h5 {
     width: -moz-fit-content;
     width: fit-content;
     margin: 0 auto 15px auto;
-    color: #175270;
     font-size: 1.5rem;
 }
 
 .form-line {
-    display: block;
     background-color: #FFFFFF;
     border-radius: 8px;
     font-size: 1.4rem;
