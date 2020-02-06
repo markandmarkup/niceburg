@@ -33,6 +33,7 @@ $burger_reviews = displayReviews($all_records);
 
     <div class="section-header">
         <h3>All Reviews</h3>
+        <a class="header-link" href="add-review.php">Add a Review &#8853;</a>
     </div>
 
     <section class="review-container">
