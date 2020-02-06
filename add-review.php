@@ -4,11 +4,10 @@ require_once 'functions.php';
 require_once 'dbConnect.php';
 
 $errors = [];
+$success_message = '';
 
 if (!empty($_POST)) {
-    echo '<pre>';
-    var_dump($_POST);
-    echo '</pre>';
+
     $new_review = $_POST;
 
     if (checkNewReviewKeys($new_review)) {
@@ -31,9 +30,13 @@ if (!empty($_POST)) {
         $errors[7] = validateRating($new_review['value_rating']);
         $new_review['total_score'] = calcTotalScore([$new_review['patty_rating'], $new_review['topping_rating'], $new_review['sides_rating'], $new_review['value_rating']]);
 
-        if (array_sum($errors) == 0) {
-            dbConnect();
-            
+        if (array_sum($errors) === 0) {
+            $db = dbConnect();
+            if (addNewReview($db, $new_review)) {
+                $success_message  = 'Review successfully posted!';
+            } else {
+                $success_message = 'Something went wrong. Maybe try again?';
+            }
         }
 
     } else {
@@ -65,27 +68,27 @@ if (!empty($_POST)) {
     </div>
 
     <section class="review-form">
-        <div class="review-post-message">Review successfully posted!</div>
+        <div class="review-post-message"><?php echo $success_message; ?></div>
         <form action="add-review.php" method="post">
             <div class="form-line">
                 <label for="burger_name">Burger Name</label><input id="burger_name" name="burger_name" type="text" required />
             </div>
-            <div class="form-error-message">There is an error in your input</div>
+            <div class="form-error-message"><?php echo isset($errors[0]) ? $errors[0] : ''; ?></div>
 
             <div class="form-line">
                 <label for="restaurant">Restaurant</label><input id="restaurant" name="restaurant" type="text" required />
             </div>
-            <div class="form-error-message">There is an error in your input</div>
+            <div class="form-error-message"><?php echo isset($errors[1]) ? $errors[1] : ''; ?></div>
 
             <div class="form-line short-form-line">
                 <label for="visit_date">Visit Date</label><input id="visit_date" class="short-input" name="visit_date" type="date" required />
             </div>
-            <div class="form-error-message">There is an error in your input</div>
+            <div class="form-error-message"><?php echo isset($errors[2]) ? $errors[2] : ''; ?></div>
 
             <div class="form-line short-form-line">
                 <label for="price">Price</label><span>&#163;</span><input id="price" class="short-input" name="price" type="number" step="0.01" min="0" max="999.99" required />
             </div>
-            <div class="form-error-message">There is an error in your input</div>
+            <div class="form-error-message"><?php echo isset($errors[3]) ? $errors[3] : ''; ?></div>
 
             <div class="rating-box">
                 <div class="form-line">

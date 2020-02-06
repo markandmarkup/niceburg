@@ -143,4 +143,61 @@ class FunctionTests extends TestCase
         $case = checkReviewKeys($input);
     }
 
+//function checkNewReviewKeys tests
+
+    public function testSuccessCheckNewReviewKeys()
+    {
+        $input = ['burger_name'=>'B', 'restaurant'=>'B', 'visit_date'=>'2020-01-01', 'price'=>5, 'patty_rating'=>5, 'topping_rating'=>5, 'sides_rating'=>5, 'value_rating'=>5];
+        $expected = true;
+        $case = checkNewReviewKeys($input);
+        $this->assertEquals($expected, $case);
+    }
+
+    public function testFailureCheckNewReviewKeysMissingKey()
+    {
+        $input = ['burger_name'=>'B', 'restaurant'=>'B', 'visit_date'=>'2020-01-01', 'price'=>5, 'patty_rating'=>5, 'topping_rating'=>5, 'sides_rating'=>5];
+        $expected = false;
+        $case = checkNewReviewKeys($input);
+        $this->assertEquals($expected, $case);
+    }
+
+    public function testFailureCheckNewReviewKeysExtraKey()
+    {
+        $input = ['burger_name'=>'B', 'restaurant'=>'B', 'visit_date'=>'2020-01-01', 'price'=>5, 'patty_rating'=>5, 'topping_rating'=>5, 'sides_rating'=>5, 'value_rating'=>5, 'extra'=>'donk'];
+        $expected = false;
+        $case = checkNewReviewKeys($input);
+        $this->assertEquals($expected, $case);
+    }
+
+    public function testMalformedCheckNewReviewKeys()
+    {
+        $this->expectException(TypeError::class);
+        $input = 'burger';
+        $case = checkNewReviewKeys($input);
+    }
+
+
+//function validateMediumString tests
+
+
+
+
+//function validateDate tests
+
+
+
+
+//function validatePrice tests
+
+
+
+
+//function validateRating tests
+
+
+
+
+//function calcTotalScore tests
+
+
 }
