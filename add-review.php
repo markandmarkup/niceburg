@@ -1,5 +1,46 @@
 <?php
 
+require_once 'functions.php';
+require_once 'dbConnect.php';
+
+$errors = [];
+
+if (!empty($_POST)) {
+    echo '<pre>';
+    var_dump($_POST);
+    echo '</pre>';
+    $new_review = $_POST;
+
+    if (checkNewReviewKeys($new_review)) {
+
+        $new_review['burger_name'] = sanitizeString($new_review['burger_name']);
+        $errors[0] = validateMediumString($new_review['burger_name']);
+        $new_review['restaurant'] = sanitizeString($new_review['restaurant']);
+        $errors[1] = validateMediumString($new_review['restaurant']);
+        $new_review['visit_date'] = sanitizeString($new_review['visit_date']);
+        $errors[2] = validateDate($new_review['visit_date']);
+        $new_review['price'] = trim($new_review['price']);
+        $errors[3] = validatePrice($new_review['price']);
+        $new_review['patty_rating'] = trim($new_review['patty_rating']);
+        $errors[4] = validateRating($new_review['patty_rating']);
+        $new_review['topping_rating'] = trim($new_review['topping_rating']);
+        $errors[5] = validateRating($new_review['topping_rating']);
+        $new_review['sides_rating'] = trim($new_review['sides_rating']);
+        $errors[6] = validateRating($new_review['sides_rating']);
+        $new_review['value_rating'] = trim($new_review['value_rating']);
+        $errors[7] = validateRating($new_review['value_rating']);
+        $new_review['total_score'] = calcTotalScore([$new_review['patty_rating'], $new_review['topping_rating'], $new_review['sides_rating'], $new_review['value_rating']]);
+
+        if (array_sum($errors) == 0) {
+            dbConnect();
+            
+        }
+
+    } else {
+        $success_message = 'Please fill in all the required fields';
+    }
+}
+
 ?>
 
 <html lang="en">

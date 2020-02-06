@@ -92,3 +92,88 @@ function checkReviewKeys(array $reviews) : bool {
     return true;
 
 }
+
+
+
+function checkNewReviewKeys(array $new_review) : bool {
+
+    $keys = ['burger_name', 'restaurant', 'visit_date', 'price', 'patty_rating', 'topping_rating', 'sides_rating', 'value_rating'];
+
+    if (array_keys($new_review) !== $keys) {
+        return false;
+    } else {
+        return true;
+    }
+}
+
+function sanitizeString(string $input) : string {
+
+    if (!is_null($input) && !empty($input)) {
+        $input = trim($input);
+        $input = filter_var($input, FILTER_SANITIZE_STRING, FILTER_FLAG_ENCODE_LOW);
+        return $input;
+    } else {
+        return '';
+    }
+
+}
+
+function validateMediumString(string $input) : string {
+
+    if (strlen($input) < 1 || strlen($input) > 200) {
+        return 'Input should be between 1 and 200 characters long';
+    } else {
+        return '';
+    }
+
+}
+
+function validateDate(string $input) : string {
+
+    if (strlen($input) !== 10) {
+        return 'Date not in the correct format';
+    }  else {
+        return '';
+    }
+
+}
+
+function validatePrice(float $input) : string {
+
+    if ($input < 0 || $input > 999.99) {
+        return 'Enter a value between £0.00 and £999.99';
+    }
+
+    if ((int)$input !== $input)
+    {
+        if ((strlen($input) - strrpos($input, '.') - 1) > 2) {
+            return 'Enter a value with no more than 2 decimal places';
+        }
+    }
+
+    return '';
+
+}
+
+function validateRating(float $input) : string {
+
+    if ($input < 0 || $input > 5) {
+        return 'Ratings should be between 0 and 5';
+    }
+
+    if ((int)$input !== $input)
+    {
+        if ((strlen($input) - strrpos($input, '.') - 1) > 1) {
+            return 'Enter a value with no more than 1 decimal place';
+        }
+    }
+
+    return '';
+
+}
+
+function calcTotalScore(array $ratings) : float {
+
+    return round((array_sum($ratings) / count($ratings)), 1, PHP_ROUND_HALF_UP);
+
+}
