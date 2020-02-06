@@ -106,7 +106,7 @@ function checkReviewKeys(array $reviews) : bool {
 
     $keys = ['burger_name', 'restaurant', 'visit_date', 'image', 'price', 'patty_rating', 'topping_rating', 'sides_rating', 'value_rating', 'total_score'];
 
-    if(gettype($reviews[0]) !== 'array'){
+    if(gettype(reset($reviews)) !== 'array'){
         return false;
     }
 
