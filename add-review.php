@@ -30,7 +30,7 @@ if (!empty($_POST)) {
         $errors[7] = validateRating($new_review['value_rating']);
         $new_review['total_score'] = calcTotalScore([$new_review['patty_rating'], $new_review['topping_rating'], $new_review['sides_rating'], $new_review['value_rating']]);
 
-        if (array_sum($errors) === 0) {
+        if (strlen(implode($errors)) == 0) {
             $db = dbConnect();
             if (addNewReview($db, $new_review)) {
                 $success_message  = 'Review successfully posted!';
