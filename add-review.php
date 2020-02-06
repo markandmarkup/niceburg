@@ -112,11 +112,6 @@
                 </div>
             </div>
 
-            <div class="form-line">
-                <label for="add_image">&#8853; Add an image</label><input id="add_image" name="add_image" type="text" />
-            </div>
-            <div class="form-error-message">There is an error in your input</div>
-
             <div class="form-line transparent">
                 <input type="submit" class="rounded-button" value="Submit Review  &#187;" />
                 <a href="index.php" class="rounded-button cancel">&#10005; Cancel</a>
