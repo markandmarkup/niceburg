@@ -63,16 +63,44 @@ header h2 {
     margin-top: 20px;
     margin-bottom: 10px;
     background-color: #FFFFFF;
-    padding: 7px 15px;
     border-radius: 8px;
+    overflow: auto;
+}
+
+a {
+    text-decoration: none;
+}
+
+.header-link {
+    float: right;
+    height: 36px;
+    padding: 7px 25px;
+    background-color: #FFCC89;
+    font-size: 1.6rem;
+    border-radius: 8px;
+    color: #814F19;
+    font-weight: 700;
+}
+
+.home {
+    float: left;
 }
 
 h3 {
+    display: inline-block;
     font-size: 1.6rem;
+    padding: 7px 25px;
 }
 
-.review-container {
+section.review-container {
     overflow: auto;
+    margin-bottom: 50px;
+}
+
+section.review-form {
+    width: 650px;
+    margin: 0 auto 100px auto;
+    padding: 15px 0;
 }
 
 .review {
@@ -145,10 +173,150 @@ h5 {
     font-size: 1.5rem;
 }
 
+/* Form page styling */
+
+.review-post-message {
+    width: -moz-fit-content;
+    width: fit-content;
+    margin: 0 auto 15px auto;
+    font-size: 1.5rem;
+}
+
+.form-line {
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    font-size: 1.4rem;
+    padding: 4px 0;
+    overflow: auto;
+}
+
+.transparent {
+    background-color: rgba(255,255,255,0)
+}
+
+.short-form-line {
+    width: 55%;
+}
+
+.form-line span {
+    float: left;
+    font-size: 1.6rem;
+    padding: 4px;
+}
+
+label {
+    padding: 6px 20px;
+    float: left;
+    font-weight: 700;
+}
+
+input {
+    margin: 3px 0;
+}
+
+input[type="text"] {
+    width: 70%;
+    float: left;
+}
+
+input[type="date"] {
+    font-size: 1.1rem;
+}
+
+input.short-input {
+    width: 170px;
+}
+
+.form-error-message {
+    margin: 4px 0 15px 20px;
+    font-size: 1.2rem;
+    color: #dc143c;
+}
+
+.rating-box {
+    background-color: #FFFFFF;
+    width: 500px;
+    margin: 0 auto 20px auto;
+    border-radius: 8px;
+}
+
+.rating-box label {
+    padding: 20px 10px 20px 40px;
+}
+
+.score-container {
+    overflow: auto;
+    float: right;
+    width: 254px;
+    padding: 10px 0;
+    margin-right: 65px;
+}
+
+.score-container input[type="radio"] {
+    display: none;
+}
+
+.score-container label {
+    float: right;
+    width: 20px;
+    height: 40px;
+    padding: 0;
+    background-repeat: no-repeat;
+    background-size: auto 100%;
+    cursor: pointer;
+    background-image: url("./images/burger_full_lh.png");
+}
+
+.burger-lh + label {
+    margin-left: 10px;
+    background-image: url("./images/burger_empty_lh.png");
+}
+
+.burger-rh + label {
+    background-image: url("./images/burger_empty_rh.png");
+}
+
+.score-container .burger-lh:checked + label {
+    background-image: url("./images/burger_full_lh.png");
+}
+
+.score-container .burger-rh:checked + label {
+    background-image: url("./images/burger_full_rh.png");
+}
+
+.score-container input[type="radio"]:checked ~ .burger-lh + label {
+    background-image: url("./images/burger_full_lh.png");
+}
+
+.score-container input[type="radio"]:checked ~ .burger-rh + label {
+    background-image: url("./images/burger_full_rh.png");
+}
+
+.rounded-button {
+    font-size: 1.6rem;
+    height: 48px;
+    background-image: linear-gradient(#FFCC89,#FFE0B7);
+    padding: 12px 40px;
+    border-radius: 25px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.cancel {
+    float: right;
+    background-image: none;
+    background-color: #f08080;
+    margin: 3px;
+}
+
 @media screen and (max-width: 1100px) {
 
     .content-column {
         width: 600px;
+    }
+
+    section.review-form{
+        width: 96%;
     }
 
     .review {
@@ -220,6 +388,41 @@ h5 {
         margin-top: 8px;
     }
 
+    .form-line {
+        font-size: 1.6rem;
+    }
+
+    input[type="text"] {
+        width: 90%;
+        margin-left: 5%;
+    }
+
+    input[type="date"] {
+        font-size: 1.4rem;
+    }
+
+    label {
+        padding: 5px 17px 0;
+    }
+
+    .short-form-line {
+        width: 100%;
+    }
+
+    input.short-input {
+        width: 58%;
+        margin-left: 5px;
+    }
+
+    .rating-box {
+        width: unset;
+    }
+
+    .score-container {
+        float: left;
+        margin-right: unset;
+    }
+
 }
 
 @media screen and (max-width: 480px) {
@@ -249,6 +452,22 @@ h5 {
 
     .stats {
         margin-left: 8px;
+    }
+
+    .rating-box .form-line > label {
+        padding: 10px 30px 0;
+    }
+
+    .score-container {
+        width: 75%;
+        min-width: 260px;
+    }
+
+    .cancel {
+        float: none;
+        display: block;
+        margin-top: 10px;
+        width: 148px;
     }
 
 }
