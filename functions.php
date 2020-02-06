@@ -12,6 +12,32 @@ function getAllReviews(PDO $db) : array {
     return $query->fetchAll();
 }
 
+/** DB Query to Insert a new review record.
+ *
+ * @param PDO $db
+ * @param array $new_review
+ *
+ * @return bool
+ */
+function addNewReview(PDO $db, array $new_review) : bool {
+
+    $query = $db->prepare("INSERT INTO `reviews` (`burger_name`, `restaurant`, `visit_date`, `price`, `patty_rating`, `topping_rating`, `sides_rating`, `value_rating`, `total_score`)
+        VALUES(:burger_name, :restaurant, :visit_date, :price, :patty_rating, :topping_rating, :sides_rating, :value_rating, :total_score)");
+
+    $query->bindParam(':burger_name', $new_review['burger_name']);
+    $query->bindParam(':restaurant', $new_review['restaurant']);
+    $query->bindParam(':visit_date', $new_review['visit_date']);
+    $query->bindParam(':price', $new_review['price']);
+    $query->bindParam(':patty_rating', $new_review['patty_rating']);
+    $query->bindParam(':topping_rating', $new_review['topping_rating']);
+    $query->bindParam(':sides_rating', $new_review['sides_rating']);
+    $query->bindParam(':value_rating', $new_review['value_rating']);
+    $query->bindParam(':total_score', $new_review['total_score']);
+
+    return $query->execute();
+
+}
+
 /** Cycles through reviews, changing the date format to dd/mm/yyyy from sql yyyy/mm/dd
  *
  * @param array $all_reviews
@@ -91,4 +117,138 @@ function checkReviewKeys(array $reviews) : bool {
     }
     return true;
 
+}
+
+
+/** Checks whether the new review contains all the keys necessary for db insertion
+ *
+ * @param array $new_review
+ *
+ * @return bool
+ */
+function checkNewReviewKeys(array $new_review) : bool {
+
+    $keys = ['burger_name', 'restaurant', 'visit_date', 'price', 'patty_rating', 'topping_rating', 'sides_rating', 'value_rating'];
+
+    if (array_keys($new_review) !== $keys) {
+        return false;
+    } else {
+        return true;
+    }
+}
+
+
+/** Sanitizes an input string, trim and filter
+ *
+ * @param string $input
+ *
+ * @return string
+ */
+function sanitizeString(string $input) : string {
+
+    if (!is_null($input) && !empty($input)) {
+        $input = trim($input);
+        $input = filter_var($input, FILTER_SANITIZE_STRING, FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_AMP);
+        return $input;
+    } else {
+        return '';
+    }
+
+}
+
+
+/** Validates a 'Medium' string - checks char length, returns error message
+ *
+ * @param string $input
+ *
+ * @return string
+ */
+function validateMediumString(string $input) : string {
+
+    if (strlen($input) < 1 || strlen($input) > 200) {
+        return 'Input should be between 1 and 200 characters long';
+    } else {
+        return '';
+    }
+
+}
+
+
+/** Validates a date - checks char length, returns error message
+ *
+ * @param string $input
+ *
+ * @return string
+ */
+function validateDate(string $input) : string {
+
+    if (strlen($input) !== 10) {
+        return 'Date not in the correct format';
+    }  else {
+        return '';
+    }
+
+}
+
+
+/** Validates a price - checks value between 0 and 999.999 & no of decimal places, returns error message
+ *
+ * @param float $input
+ *
+ * @return string
+ */
+function validatePrice(float $input) : string {
+
+    if ($input < 0 || $input > 999.99) {
+        return 'Enter a value between £0.00 and £999.99';
+    }
+
+    if ((int)$input !== $input)
+    {
+        if ((strlen($input) - strrpos($input, '.') - 1) > 2) {
+            return 'Enter a value with no more than 2 decimal places';
+        }
+    }
+
+    return '';
+
+}
+
+/** Validates a rating - checks value between 0 and 5 & no of decimal places, returns error message
+ *
+ * @param float $input
+ *
+ * @return string
+ */
+
+function validateRating(float $input) : string {
+
+    if ($input < 0 || $input > 5) {
+        return 'Ratings should be between 0 and 5';
+    }
+
+    if ((int)$input !== $input)
+    {
+        if ((strlen($input) - strrpos($input, '.') - 1) > 1) {
+            return 'Enter a value with no more than 1 decimal place';
+        }
+    }
+
+    return '';
+
+}
+
+/** Calculates Total Score from average of Ratings, rounded up to nearest .1
+ *
+ * @param array $ratings
+ *
+ * @return float
+ */
+function calcTotalScore(array $ratings) : float {
+
+    if (!empty($ratings)) {
+        return round((array_sum($ratings) / count($ratings)), 1, PHP_ROUND_HALF_UP);
+    } else {
+        return 0;
+    }
 }
