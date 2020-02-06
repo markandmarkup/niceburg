@@ -246,6 +246,9 @@ function validateRating(float $input) : string {
  */
 function calcTotalScore(array $ratings) : float {
 
-    return round((array_sum($ratings) / count($ratings)), 1, PHP_ROUND_HALF_UP);
-
+    if (!empty($ratings)) {
+        return round((array_sum($ratings) / count($ratings)), 1, PHP_ROUND_HALF_UP);
+    } else {
+        return 0;
+    }
 }

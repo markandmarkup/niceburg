@@ -179,25 +179,203 @@ class FunctionTests extends TestCase
 
 //function validateMediumString tests
 
+    public function testSuccessValidateMediumString()
+    {
+        $input = 'Burger';
+        $expected = '';
+        $case = validateMediumString($input);
+        $this->assertEquals($expected, $case);
+    }
 
+    public function testFailureValidateMediumStringEmpty()
+    {
+        $input = '';
+        $expected = 'Input should be between 1 and 200 characters long';
+        $case = validateMediumString($input);
+        $this->assertEquals($expected, $case);
+    }
+
+    public function testFailureValidateMediumStringTooLong()
+    {
+        $input = 'bQYNMYEVt5Motz68IUAXBvhAin2qVHZW2E3ESEChylNJOrkk0qewiD5mcmOg3nwZWlRNNhB0SGE0GorPLHrFWRoerMZIhPdJq398SxKQk4LNlgavmDaJlXSbj2mHO34da49aXmgoTL2JHXJrbRnyNsHFnhtv9gAZ7tj7f6x2Ey7CrwsDZVC73bY6Ihk3VIGd4ipTXTojR';
+        $expected = 'Input should be between 1 and 200 characters long';
+        $case = validateMediumString($input);
+        $this->assertEquals($expected, $case);
+    }
+
+    public function testMalformedValidateMediumString()
+    {
+        $this->expectException(TypeError::class);
+        $input = ['name'=>'burger'];
+        $case = validateMediumString($input);
+    }
 
 
 //function validateDate tests
 
+    public function testSuccessValidateDate()
+    {
+        $input = '2020-01-01';
+        $expected = '';
+        $case = validateDate($input);
+        $this->assertEquals($expected, $case);
+    }
 
+    public function testFailureValidateDateTooShort()
+    {
+        $input = '2001';
+        $expected = 'Date not in the correct format';
+        $case = validateDate($input);
+        $this->assertEquals($expected, $case);
+    }
+
+    public function testFailureValidateDateTooLong()
+    {
+        $input = '2001-001-01';
+        $expected = 'Date not in the correct format';
+        $case = validateDate($input);
+        $this->assertEquals($expected, $case);
+    }
+
+    public function testMalformedValidateDate()
+    {
+        $this->expectException(TypeError::class);
+        $input = ['date'=>'Today'];
+        $case = validateDate($input);
+    }
 
 
 //function validatePrice tests
 
+    public function testSuccessValidatePrice()
+    {
+        $input = 3.99;
+        $expected = '';
+        $case = validatePrice($input);
+        $this->assertEquals($expected, $case);
+    }
+
+    public function testSuccessValidatePriceInteger()
+    {
+        $input = 7;
+        $expected = '';
+        $case = validatePrice($input);
+        $this->assertEquals($expected, $case);
+    }
+
+    public function testFailureValidatePriceTooSmall()
+    {
+        $input = -2.22;
+        $expected = 'Enter a value between £0.00 and £999.99';
+        $case = validatePrice($input);
+        $this->assertEquals($expected, $case);
+    }
+
+    public function testFailureValidatePriceTooBig()
+    {
+        $input = 1234.56;
+        $expected = 'Enter a value between £0.00 and £999.99';
+        $case = validatePrice($input);
+        $this->assertEquals($expected, $case);
+    }
+
+    public function testFailureValidatePriceTooManyDecimals()
+    {
+        $input = 6.456;
+        $expected = 'Enter a value with no more than 2 decimal places';
+        $case = validatePrice($input);
+        $this->assertEquals($expected, $case);
+    }
+
+    public function testMalformedValidatePrice()
+    {
+        $this->expectException(TypeError::class);
+        $input = ['price'=>'Five'];
+        $case = validatePrice($input);
+    }
 
 
 
 //function validateRating tests
 
+    public function testSuccessValidateRating()
+    {
+        $input = 2.5;
+        $expected = '';
+        $case = validateRating($input);
+        $this->assertEquals($expected, $case);
+    }
 
+    public function testSuccessValidateRatingInteger()
+    {
+        $input = 4;
+        $expected = '';
+        $case = validateRating($input);
+        $this->assertEquals($expected, $case);
+    }
+
+    public function testFailureValidateRatingTooSmall()
+    {
+        $input = -1;
+        $expected = 'Ratings should be between 0 and 5';
+        $case = validateRating($input);
+        $this->assertEquals($expected, $case);
+    }
+
+    public function testFailureValidateRatingTooBig()
+    {
+        $input = 5.5;
+        $expected = 'Ratings should be between 0 and 5';
+        $case = validateRating($input);
+        $this->assertEquals($expected, $case);
+    }
+
+    public function testFailureValidateRatingTooManyDecimals()
+    {
+        $input = 3.75;
+        $expected = 'Enter a value with no more than 1 decimal place';
+        $case = validateRating($input);
+        $this->assertEquals($expected, $case);
+    }
+
+    public function testMalformedValidateRating()
+    {
+        $this->expectException(TypeError::class);
+        $input = ['patty_rating'=>'4'];
+        $case = validateRating($input);
+    }
 
 
 //function calcTotalScore tests
 
+    public function testSuccessCalcTotalScore()
+    {
+        $input = [5, 6, 10, 4];
+        $expected = 6.3;
+        $case = calcTotalScore($input);
+        $this->assertEquals($expected, $case);
+    }
 
+    public function testFailureCalcTotalScoreEmptyInput()
+    {
+        $input = [];
+        $expected = 0;
+        $case = calcTotalScore($input);
+        $this->assertEquals($expected, $case);
+    }
+
+    public function testFailureCalcTotalScoreOneInput()
+    {
+        $input = [5];
+        $expected = 5;
+        $case = calcTotalScore($input);
+        $this->assertEquals($expected, $case);
+    }
+
+    public function testMalformedCalcTotalScore()
+    {
+        $this->expectException(TypeError::class);
+        $input = 5;
+        $case = calcTotalScore($input);
+    }
 }
