@@ -7,7 +7,7 @@
  * @return array
  */
 function getAllReviews(PDO $db) : array {
-    $query = $db->prepare("SELECT `burger_name`, `restaurant`, `visit_date`, `image`, `price`, `patty_rating`, `topping_rating`, `sides_rating`, `value_rating`, `total_score` FROM `reviews`");
+    $query = $db->prepare("SELECT `id`, `burger_name`, `restaurant`, `visit_date`, `image`, `price`, `patty_rating`, `topping_rating`, `sides_rating`, `value_rating`, `total_score` FROM `reviews`");
     $query->execute();
     return $query->fetchAll();
 }
@@ -86,6 +86,8 @@ function displayReviews(array $all_reviews) : string {
             $output .= "<tr><th>Value:</th><td>" . $review['value_rating'] . "</td></tr>";
             $output .= "</table>";
             $output .= "</div>";
+            $output .= "<a class=\"review-button delete\" href=\"delete-review.php?id=" . $review['id'] . "\"></a>";
+            $output .= "<a class=\"review-button edit\" href=\"edit-review.php?id=" . $review['id'] . "\"></a>";
             $output .= "<p class=\"rating\">Total Score:&nbsp;&nbsp;<span>" . $review['total_score'] . "</span></p>";
             $output .= "</div>";
         }
@@ -110,9 +112,11 @@ function checkReviewKeys(array $reviews) : bool {
         return false;
     }
 
-    foreach ($reviews as $review){
-        if($keys !== array_keys($review)){
-            return false;
+    foreach ($reviews as $review) {
+        foreach ($keys as $key) {
+            if (!in_array($key, array_keys($review))) {
+                return false;
+            }
         }
     }
     return true;

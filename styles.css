@@ -130,13 +130,30 @@ section.review-form {
     border-radius: 18px;
 }
 
+.review-button {
+    display: block;
+    width: 32px;
+    height: 32px;
+    border: 1px solid #814F19;
+    border-radius: 5px;
+    background-color: #FFCC89;
+    float: right;
+    margin: 9px 3px 0;
+}
+
+.delete {
+    margin-right: 10px;
+}
+
 .stats, .item-titles {
     float: left;
     margin-left: 20px;
 }
 
+
 .item-titles {
     width: 255px;
+    margin-bottom: 8px;
     margin-bottom: 8px;
 }
 

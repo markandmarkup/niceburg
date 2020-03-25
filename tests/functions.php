@@ -98,15 +98,6 @@ class FunctionTests extends TestCase
         $this->assertEquals($expected, $case);
     }
 
-    //passing the function an array with extra fields
-    public function testFailureCheckReviewKeysExtraFields()
-    {
-        $input = [['burger_name' => 'Burger', 'restaurant' => 'McDonalds', 'visit_date' => '01/01/2020', 'image' => './images/burger.jpg', 'price' => '5.57', 'patty_rating' => 4, 'topping_rating' => 1.5, 'sides_rating' => 3, 'value_rating' => 2.5, 'total_score' => 3.2, 'extra' => 'Donk']];
-        $expected = false;
-        $case = checkReviewKeys($input);
-        $this->assertEquals($expected, $case);
-    }
-
     //passing the function a non-nested array
     public function testFailureCheckReviewKeysNonNestArray()
     {
