@@ -32,6 +32,7 @@ if (!empty($_POST)) {
 
         if (strlen(implode($errors)) == 0) {
             $db = dbConnect();
+            $db = dbConnect();
             if (addNewReview($db, $new_review)) {
                 $success_message  = 'Review successfully posted!';
             } else {

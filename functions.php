@@ -12,6 +12,17 @@ function getAllReviews(PDO $db) : array {
     return $query->fetchAll();
 }
 
+function getSingleReview(PDO $db, int $id) : array {
+    $query = $db->prepare("SELECT `id`, `burger_name`, `restaurant`, `visit_date`, `image`, `price`, `patty_rating`, `topping_rating`, `sides_rating`, `value_rating`, `total_score` FROM `reviews` WHERE `id` = " . $id );
+    $query->execute();
+    $result = $query->fetch();
+    if (is_array($result)) {
+        return $result;
+    } else {
+        return [];
+    }
+}
+
 /** DB Query to Insert a new review record.
  *
  * @param PDO $db
