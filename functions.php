@@ -7,13 +7,14 @@
  * @return array
  */
 function getAllReviews(PDO $db) : array {
-    $query = $db->prepare("SELECT `id`, `burger_name`, `restaurant`, `visit_date`, `image`, `price`, `patty_rating`, `topping_rating`, `sides_rating`, `value_rating`, `total_score` FROM `reviews`");
+    $query = $db->prepare("SELECT `id`, `burger_name`, `restaurant`, `visit_date`, `image`, `price`, `patty_rating`, `topping_rating`, `sides_rating`, `value_rating`, `total_score` FROM `reviews` WHERE `deleted` = 0");
     $query->execute();
     return $query->fetchAll();
 }
 
 function getSingleReview(PDO $db, int $id) : array {
-    $query = $db->prepare("SELECT `id`, `burger_name`, `restaurant`, `visit_date`, `image`, `price`, `patty_rating`, `topping_rating`, `sides_rating`, `value_rating`, `total_score` FROM `reviews` WHERE `id` = " . $id );
+    $query = $db->prepare("SELECT `id`, `burger_name`, `restaurant`, `visit_date`, `image`, `price`, `patty_rating`, `topping_rating`, `sides_rating`, `value_rating`, `total_score` FROM `reviews` WHERE `id` = :id");
+    $query->bindParam(':id', $id);
     $query->execute();
     $result = $query->fetch();
     if (is_array($result)) {
@@ -44,6 +45,42 @@ function addNewReview(PDO $db, array $new_review) : bool {
     $query->bindParam(':sides_rating', $new_review['sides_rating']);
     $query->bindParam(':value_rating', $new_review['value_rating']);
     $query->bindParam(':total_score', $new_review['total_score']);
+
+    return $query->execute();
+
+}
+
+/** Takes a single review as assoc array and updates it against the ID in the database
+ *
+ * @param PDO $db
+ * @param array $new_review
+ *
+ * @return bool
+ */
+function updateReview(PDO $db, array $new_review) : bool {
+
+    $query = $db->prepare("UPDATE `reviews` SET 
+         `burger_name` = :burger_name,
+         `restaurant` = :restaurant,
+         `visit_date` = :visit_date,
+         `price` = :price,
+         `patty_rating` = :patty_rating,
+         `topping_rating` = :topping_rating,
+         `sides_rating` = :sides_rating,
+         `value_rating` = :value_rating,
+         `total_score` = :total_score
+         WHERE `id` = :id;");
+
+    $query->bindParam(':burger_name', $new_review['burger_name']);
+    $query->bindParam(':restaurant', $new_review['restaurant']);
+    $query->bindParam(':visit_date', $new_review['visit_date']);
+    $query->bindParam(':price', $new_review['price']);
+    $query->bindParam(':patty_rating', $new_review['patty_rating']);
+    $query->bindParam(':topping_rating', $new_review['topping_rating']);
+    $query->bindParam(':sides_rating', $new_review['sides_rating']);
+    $query->bindParam(':value_rating', $new_review['value_rating']);
+    $query->bindParam(':total_score', $new_review['total_score']);
+    $query->bindParam(':id', $new_review['id']);
 
     return $query->execute();
 
@@ -145,11 +182,12 @@ function checkNewReviewKeys(array $new_review) : bool {
 
     $keys = ['burger_name', 'restaurant', 'visit_date', 'price', 'patty_rating', 'topping_rating', 'sides_rating', 'value_rating'];
 
-    if (array_keys($new_review) !== $keys) {
-        return false;
-    } else {
-        return true;
+    foreach ($keys as $key) {
+        if (!in_array($key, array_keys($new_review))) {
+            return false;
+        }
     }
+    return true;
 }
 
 

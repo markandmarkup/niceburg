@@ -231,6 +231,13 @@ input {
     margin: 3px 0;
 }
 
+#id {
+    visibility: hidden;
+    width: 30px;
+    position: fixed;
+    left: -32px;
+}
+
 input[type="text"] {
     width: 70%;
     float: left;
