@@ -86,6 +86,21 @@ function updateReview(PDO $db, array $new_review) : bool {
 
 }
 
+/** Soft deletes a record in the db according the the id given
+ *
+ * @param PDO $db
+ * @param int $id
+ *
+ * @return bool
+ */
+function deleteReview(PDO $db, int $id) : bool {
+
+    $query = $db->prepare("UPDATE `reviews` SET `deleted` = 1 WHERE `id` = :id;");
+    $query->bindParam(':id', $id);
+    return $query->execute();
+
+}
+
 /** Cycles through reviews, changing the date format to dd/mm/yyyy from sql yyyy/mm/dd
  *
  * @param array $all_reviews
@@ -134,8 +149,8 @@ function displayReviews(array $all_reviews) : string {
             $output .= "<tr><th>Value:</th><td>" . $review['value_rating'] . "</td></tr>";
             $output .= "</table>";
             $output .= "</div>";
-            $output .= "<a class=\"review-button delete\" href=\"delete-review.php?id=" . $review['id'] . "\"></a>";
-            $output .= "<a class=\"review-button edit\" href=\"edit-review.php?id=" . $review['id'] . "\"></a>";
+            $output .= "<a class=\"review-button delete\" href=\"delete-review.php?id=" . $review['id'] . "\" title=\"Delete Review\"><i class=\"far fa-trash-alt\"></i></a>";
+            $output .= "<a class=\"review-button edit\" href=\"edit-review.php?id=" . $review['id'] . "\" title=\"Edit Review\"><i class=\"far fa-edit\"></i></a>";
             $output .= "<p class=\"rating\">Total Score:&nbsp;&nbsp;<span>" . $review['total_score'] . "</span></p>";
             $output .= "</div>";
         }

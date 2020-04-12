@@ -257,6 +257,19 @@ input.short-input {
     color: #dc143c;
 }
 
+i {
+    font-size: 1.6em;
+    color: #814F19;
+}
+
+.fa-edit {
+    padding: 5px 6px;
+}
+
+.fa-trash-alt {
+    padding: 5px 7px;
+}
+
 .rating-box {
     background-color: #FFFFFF;
     width: 500px;

@@ -21,6 +21,7 @@ $burger_reviews = displayReviews($all_records);
     <link href="https://fonts.googleapis.com/css?family=Pacifico|Quattrocento+Sans:400,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="normalize.css" />
     <link rel="stylesheet" type="text/css" href="styles.css" />
+    <script defer src="https://kit.fontawesome.com/3d49cc2df6.js" crossorigin="anonymous"></script>
     <title>NiceBurg | Burger Reviews</title>
 </head>
 <body>
